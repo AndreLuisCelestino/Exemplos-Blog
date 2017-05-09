@@ -192,7 +192,7 @@ begin
 
     // Percorre a lista de objetos, inserindo o valor da propriedade "Nome" do ClientDataSet
     for Funcionario in FListaFuncionarios do
-      ClientDataSet.AppendRecord([VarToStr(PropriedadeNome.GetValue(Funcionario).AsVariant)]);
+      ClientDataSet.AppendRecord([PropriedadeNome.GetValue(Funcionario).AsString]);
 
     ClientDataSet.First;
   finally
