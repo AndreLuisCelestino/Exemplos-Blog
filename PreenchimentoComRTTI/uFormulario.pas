@@ -114,8 +114,8 @@ procedure TfFormulario.PreencherCampos(Funcionario: TFuncionario);
 var
   Contexto: TRttiContext;
   Tipo: TRttiType;
-  Valor: variant;
   Propriedade: TRttiProperty;
+  Valor: variant;
   Componente: TComponent;
 begin
   // Cria o contexto do RTTI
@@ -156,17 +156,17 @@ begin
 
       // (Senioridade)
       // Testa se o componente é da classe "TTrackBar" para acessar a propriedade "Position"
-      if (Componente is TTrackBar) then
+      if Componente is TTrackBar then
         (Componente as TTrackBar).Position := Valor;
 
       // (Data de Nascimento)
       // Testa se o componente é da classe "TDateTimePicker" para acessar a propriedade "Date"
-      if (Componente is TDateTimePicker) then
+      if Componente is TDateTimePicker then
         (Componente as TDateTimePicker).Date := Valor;
 
       // (Cor do Uniforme)
       // Testa se o componente é da classe "TShape" para acessar a propriedade "Brush.Color"
-      if (Componente is TShape) then
+      if Componente is TShape then
         (Componente as TShape).Brush.Color := Valor;
     end;
   finally
