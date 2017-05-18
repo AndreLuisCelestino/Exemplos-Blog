@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2017/05/14 23:13:52.000.011,=rtl.dcp</Transaction>
+    <Transaction>2017/05/14 23:13:57.000.139,C:\Users\Andre\Documents\Embarcadero\Studio\Projects\PacoteWizard.dproj=C:\Users\Andre\Documents\Embarcadero\Studio\Projects\Package1.dproj</Transaction>
+    <Transaction>2017/05/14 23:14:06.000.325,D:\PacoteWizard\PacoteWizard.dproj=C:\Users\Andre\Documents\Embarcadero\Studio\Projects\PacoteWizard.dproj</Transaction>
+    <Transaction>2017/05/14 23:14:49.000.765,=designide.dcp</Transaction>
+    <Transaction>2017/05/14 23:16:38.000.268,=D:\PacoteWizard\Unit1.pas</Transaction>
+    <Transaction>2017/05/14 23:16:52.000.282,D:\PacoteWizard\uVisualizadorDataSets.pas=D:\PacoteWizard\Unit1.pas</Transaction>
+    <Transaction>2017/05/15 00:19:51.000.930,=dbrtl.dcp</Transaction>
+    <Transaction>2017/05/15 00:19:51.000.939,=dsnap.dcp</Transaction>
+    <Transaction>2017/05/15 00:22:31.000.893,=vcldb.dcp</Transaction>
+  </Transactions>
+</BorlandProject>
