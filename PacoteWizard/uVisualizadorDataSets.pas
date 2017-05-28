@@ -42,7 +42,7 @@ implementation
 
 uses
   System.SysUtils, System.IOUtils, Vcl.Forms, Datasnap.DBClient, Data.DB, Vcl.DBGrids,
-  Vcl.Controls;
+  Vcl.Controls, Vcl.Dialogs, System.UITypes;
 
 procedure Register;
 begin
@@ -74,6 +74,10 @@ begin
 
     // Carrega o arquivo temporário de dados gerado no método "Execute"
     ArquivoDados := System.IOUtils.TPath.GetTempPath + 'Dados.xml';
+
+    if not FileExists(ArquivoDados) then
+      Exit;
+
     DataSet.LoadFromFile(ArquivoDados);
 
     // Cria um DataSource e o aponta para o ClientDataSet
@@ -101,6 +105,7 @@ var
   Expressao: string;
   Thread: IOTAThread;
   Retorno: TOTAEvaluateResult;
+  Processo: IOTAProcess;
   IndiceNotifier: integer;
 
   // Variáveis para preencher os parâmetros "out" do Evaluate
@@ -120,8 +125,19 @@ begin
   // pressionar CTRL + F7 para abrir o Evaluate/Modify e chamar o SaveToFile
   Expressao := Format('%s.SaveToFile(''%s'')', [TextoSelecionado, ArquivoDados]);
 
-  // Obtém a Thread do serviço de depuração
+  // Obtém o processo referente ao serviço de depuração
+  Processo := (BorlandIDEServices as IOTADebuggerServices).CurrentProcess;
+
+  if not Assigned(Processo) then
+  begin
+    MessageDlg('O visualizador de DataSets só pode ser executado em tempo de execução.',
+      mtInformation, [mbOK], 0);
+    Exit;
+  end;
+
+  // Obtém a thread do serviço de depuração
   Thread := (BorlandIDEServices as IOTADebuggerServices).CurrentProcess.CurrentThread;
+
 
   // Solicita a avaliação da expressão
   Retorno := Thread.Evaluate(Expressao, '', 0, CanModify, True, '', Endereco,
